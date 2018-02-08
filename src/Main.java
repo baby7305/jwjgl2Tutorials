@@ -3,22 +3,22 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
 public class Main {
-    public Main() {
-        try {
-            Display.setDisplayMode(new DisplayMode(800, 600));
-            Display.create();
+	public static void main(String[] args) {
+		try {
+			Display.setDisplayMode(new DisplayMode(640, 480));
+			Display.setTitle("Episode 1 - Display Test");
+			Display.create();
+		} catch (LWJGLException e) {
+			e.printStackTrace();
+			Display.destroy();
+			System.exit(1);
+		}
+		while (!Display.isCloseRequested()) {
+			Display.update();
+			Display.sync(60);
+		}
 
-            while(!Display.isCloseRequested()) {
-                Display.update();
-            }
-
-            Display.destroy();
-        } catch(LWJGLException e) {
-            e.printStackTrace();
-        }
-    }
-
-    public static void main(String[] args) {
-        new Main();
-    }
+		Display.destroy();
+		System.exit(0);
+	}
 }
