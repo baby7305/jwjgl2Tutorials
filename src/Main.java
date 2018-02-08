@@ -27,6 +27,7 @@ public class Main {
 		// Upper-Left:  (-1,+1) Upper-Right:  (+1,+1)
 		// Bottom-Left: (-1,-1) Bottom-Right: (+1,-1)
 		glMatrixMode(GL_PROJECTION);
+		glLoadIdentity();
 		glOrtho(0, 640, 480, 0, 1, -1);
 		glMatrixMode(GL_MODELVIEW);
 		// While we aren't pressing the red button on the display
@@ -38,21 +39,15 @@ public class Main {
 			// >> glBegin accepts a single argument that specifies how the vertices are interpreted.
 			// All upcoming vertex calls will be taken as points of a quadrilateral until glEnd is called. Since
 			// this primitive requires four vertices, we will have to call glVertex four times.
-			glBegin(GL_QUADS);
+			glBegin(GL_LINES);
 			// >> glVertex commands are used within glBegin/glEnd pairs to specify point, line, and polygon vertices.
 			// >> glColor sets the current colour. (All subsequent calls to glVertex will be assigned this colour)
 			// >> The number after 'glVertex'/'glColor' indicates the amount of components. (xyzw/rgba)
 			// >> The character after the number indicates the type of arguments.
 			// >>      (for 'glVertex' = d: Double, f: Float, i: Integer)
 			// >>      (for 'glColor'  = d: Double, f: Float, b: Signed Byte, ub: Unsigned Byte)
-			glColor3f(1.0f, 0.0f, 0.0f);                    // Pure Green
-			glVertex2i(0, 0);                               // Upper-left
-			glColor3b((byte) 0, (byte) 127, (byte) 0);      // Pure Red
-			glVertex2d(640.0, 0.0);                         // Upper-right
-			glColor3ub((byte) 255, (byte) 255, (byte) 255); // White
-			glVertex2f(640.0f, 480.0f);                     // Bottom-right
-			glColor3d(0.0d, 0.0d, 1.0d);                    // Pure Blue
-			glVertex2i(0, 480);                             // Bottom-left
+			glVertex2i(100, 100);                               // resolve-left
+			glVertex2i(640, 0);                         // Upper-right
 			// If we put another four calls to glVertex2i here, a second quadrilateral will be drawn.
 			glEnd();
 			// Update the contents of the display and check for input.
