@@ -39,6 +39,12 @@ public class Main {
 			// >> glBegin accepts a single argument that specifies how the vertices are interpreted.
 			// All upcoming vertex calls will be taken as points of a quadrilateral until glEnd is called. Since
 			// this primitive requires four vertices, we will have to call glVertex four times.
+			glBegin(GL_QUADS);
+			glVertex2i(200, 200);
+			glVertex2i(300, 200);
+			glVertex2i(300, 300);
+			glVertex2i(200, 300);
+			glEnd();
 			glBegin(GL_LINES);
 			// >> glVertex commands are used within glBegin/glEnd pairs to specify point, line, and polygon vertices.
 			// >> glColor sets the current colour. (All subsequent calls to glVertex will be assigned this colour)
